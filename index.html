@@ -386,11 +386,22 @@
   <footer>
     <p>&copy; 2025 Deeksha Jaitly • Data Analyst Portfolio • Built with HTML & CSS</p>
   </footer>
-  <script>
+<script>
   function toggleMenu() {
     const nav = document.getElementById('navbar');
     nav.classList.toggle('active');
   }
+
+  // ✅ Close mobile menu when any nav link is clicked
+  document.addEventListener('DOMContentLoaded', () => {
+    const navLinks = document.querySelectorAll('#navbar a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        const nav = document.getElementById('navbar');
+        nav.classList.remove('active');
+      });
+    });
+  });
 </script>
 </body>
 
