@@ -255,13 +255,51 @@
         font-size: 1.5rem;
       }
     }
+    /* Hide hamburger menu by default */
+.menu-icon {
+  display: none;
+  font-size: 1.8rem;
+  color: var(--highlight);
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  nav {
+    display: none; /* Hide nav by default on mobile */
+    flex-direction: column;
+    background-color: var(--bg);
+    position: fixed;
+    top: 60px; /* just below header */
+    right: 0;
+    width: 100%;
+    padding: 1rem 0;
+    border-top: 1px solid var(--accent);
+    z-index: 1000;
+  }
+
+  nav.active {
+    display: flex; /* Show nav when active */
+  }
+
+  nav a {
+    padding: 0.75rem 1.5rem;
+    font-size: 1.2rem;
+    border-bottom: 1px solid var(--accent);
+  }
+
+  .menu-icon {
+    display: block;
+  }
+}
   </style>
 </head>
 
 <body>
   <header>
-    <strong>Deeksha Jaitly</strong>
-    <nav role="navigation" aria-label="Primary navigation">
+    <div class="logo">Deeksha Jaitly</div>
+    <nav class="navbar" id="navbar">
       <a href="#about">About</a>
       <a href="#projects">Projects</a>
       <a href="#publications">Publications</a>
@@ -269,6 +307,7 @@
       <a href="#resume">Resume</a>
       <a href="#contact">Contact</a>
     </nav>
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
   </header>
 
   <main class="container">
@@ -347,6 +386,12 @@
   <footer>
     <p>&copy; 2025 Deeksha Jaitly • Data Analyst Portfolio • Built with HTML & CSS</p>
   </footer>
+  <script>
+  function toggleMenu() {
+    const nav = document.getElementById('navbar');
+    nav.classList.toggle('active');
+  }
+</script>
 </body>
 
 </html>
